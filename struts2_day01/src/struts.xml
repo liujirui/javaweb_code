@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 引入dtd約束-->
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	
+	<package name="default" namespace="/" extends="struts-default">
+	   <!-- 访问名称 -->
+	   <action name="hello" class="cn.liu.action.HelloAction" >
+	   		<!-- action里面方法的返回值一一对应 -->
+	   		<result name="ok" >/hellotest.jsp</result>
+	   </action>
+	   
+	   <!--  使用method属性配置action里面的方法 -->
+	   <action name="addaction" class="cn.liu.action.MethodAction" method="add"></action>
+	   <action name="updateaction" class="cn.liu.action.MethodAction" method="update"></action>
+	   
+	   <!-- 使用通配符调用action -->
+	   <action name="method_*" class="cn.liu.action.MethodAction" method="{1}">
+	   		<result name="query">/query.jsp</result>
+	   		<result name="delete">/delete.jsp</result>
+	   </action>
+	   
+	   <!--  动态调用 -->
+	   <action name="dynamic" class="cn.liu.action.MethodAction">
+	   		<result>/dynamic.jsp</result>
+	   </action>
+	   
+	</package>
+</struts>
