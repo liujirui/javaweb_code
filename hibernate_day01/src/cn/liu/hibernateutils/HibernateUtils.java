@@ -20,5 +20,10 @@ public class HibernateUtils
 	{
 		return sessionFactory;
 	}
+	
+	public static void main(String[] args)
+	{
+		
+	}
 
 }

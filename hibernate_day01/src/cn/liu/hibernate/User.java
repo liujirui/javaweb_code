@@ -7,20 +7,21 @@ public class User
 	/*
 	 * Hibernate 要求实体类中有一个属性唯一的
 	 */
-	private int uid;
+	private String uid;
 	private String username;
 	private String password;
 	private String address;
-
-	public int getUid() 
+	
+	public String getUid()
 	{
 		return uid;
 	}
 
-	public void setUid(int uid) 
+	public void setUid(String uid)
 	{
 		this.uid = uid;
 	}
+
 
 	public String getUsername() 
 	{
