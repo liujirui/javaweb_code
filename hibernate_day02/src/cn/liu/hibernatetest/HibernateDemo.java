@@ -70,7 +70,7 @@ public class HibernateDemo
 		Transaction transaction=session.beginTransaction();
 		/*先查询uid为1的数据，然後再修改*/
 		User user=session.get(User.class, 1);
-		user.setPassword("qwerty");
+		user.setPassword("qwer");
 		session.update(user);
 		/*提交事务*/
 		transaction.commit();
@@ -120,6 +120,39 @@ public class HibernateDemo
 		/*关闭释放资源*/
 		session.close();
 		sessionFactory.close();
+	}
+	
+	/*事务的标准写法*/
+	@Test
+	public void testTransaction()
+	{
+		SessionFactory sessionFactory=null;
+		Session session=null;
+		Transaction transaction=null;
+		try
+		{
+			sessionFactory=HibernateUtils.getSessionFactory();
+			session=sessionFactory.openSession();
+			transaction=session.beginTransaction();
+			User user=new User();
+			user.setAddress("bobai");
+			user.setPassword("pass");
+			user.setUsername("user");
+			session.save(user);
+			int a=10/0;
+			transaction.commit();
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+			/*
+			 * 事务回滚
+			 * 设置回滚后，发生异常时，事务提交前的操作不起作用
+			 * */
+			transaction.rollback();
+		}finally {
+			session.close();
+			sessionFactory.close();
+		}
 	}
 
 }
