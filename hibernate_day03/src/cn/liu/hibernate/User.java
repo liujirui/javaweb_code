@@ -1,62 +1,47 @@
 package cn.liu.hibernate;
 
-import org.hibernate.Hibernate;
+import java.util.HashSet;
+import java.util.Set;
 
-public class User 
+public class User
 {
-	/*
-	 * Hibernate 要求实体类中有一个属性唯一的
-	 */
-	private int uid;
-	private String username;
-	private String password;
-	private String address;
-
-	public int getUid() 
+	private Integer userId;
+	private String userName;
+	private String userPassword;
+	
+	private Set<Role> setRole=new HashSet<Role>();
+	
+	public Set<Role> getSetRole()
 	{
-		return uid;
+		return setRole;
 	}
-
-	public void setUid(int uid) 
+	public void setSetRole(Set<Role> setRole)
 	{
-		this.uid = uid;
+		this.setRole = setRole;
 	}
-
-	public String getUsername() 
+	public Integer getUserId()
 	{
-		return username;
+		return userId;
 	}
-
-	public void setUsername(String username) 
+	public void setUserId(Integer userId)
 	{
-		this.username = username;
+		this.userId = userId;
 	}
-
-	public String getPassword() 
+	public String getUserName()
 	{
-		return password;
+		return userName;
 	}
-
-	public void setPassword(String password) 
+	public void setUserName(String userName)
 	{
-		this.password = password;
+		this.userName = userName;
 	}
-
-	public String getAddress() 
+	public String getUserPassword()
 	{
-		return address;
+		return userPassword;
 	}
-
-	public void setAddress(String address) 
+	public void setUserPassword(String userPassword)
 	{
-		this.address = address;
+		this.userPassword = userPassword;
 	}
-
-	@Override
-	public String toString()
-	{
-		return "User [uid=" + uid + ", username=" + username + ", password=" + password + ", address=" + address + "]";
-	}
-
 	
 }

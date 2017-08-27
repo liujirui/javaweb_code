@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+          "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+          "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+<hibernate-mapping>
+	<class name="cn.liu.hibernate.Customer" table="t_customer">
+		<id name="cid" column="cid">
+			<generator class="native"></generator>
+		</id>
+		<property name="custName" column="custName"></property>
+		<property name="custLevel" column="custLevel"></property>
+		<property name="custSource" column="custSource"></property>
+		<property name="custPhone" column="custPhone"></property>
+		<property name="custMobile" column="custMobile"></property>
+		<!-- 
+		在映射文件中，使用set标签配置一对多映射关系
+		name属性为在实体类定义的set集合名称
+		inverse="true"表示放弃维护外键，默认为false
+		 -->
+		 <set name="setLinkMan" cascade="save-update,delete" inverse="true">
+		<!--  一对多建表，有外键
+		hibernate机制：双向维护，在一和多的那一方都配置外键
+		column属性值：外键名称，随便起
+		 -->
+		 <key column="clid"></key>
+		<!--  class路径为一对多关系中多对应的实体类路径 -->
+		 <one-to-many class="cn.liu.hibernate.LinkMan"/>
+		 </set>
+	</class>
+</hibernate-mapping>
+          

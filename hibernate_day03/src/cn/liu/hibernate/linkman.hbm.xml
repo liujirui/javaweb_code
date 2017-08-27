@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+          "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+          "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+<hibernate-mapping>
+	<class name="cn.liu.hibernate.LinkMan" table="t_linkman">
+		<id name="link_id" column="link_id">
+			<generator class="native"></generator>
+		</id>
+		<property name="link_name" column="link_name"></property>
+		<property name="link_sex" column="link_sex"></property>
+		<property name="link_phone" column="link_phone"></property>
+		<!-- 配置一对多关系中一对应的Customer实体类信息 
+		name属性为在实体类定义的Customer类名
+		class属性为Customer路径
+		column属性为外键名
+		-->
+		<many-to-one name="customer" class="cn.liu.hibernate.Customer" column="clid">
+		</many-to-one>
+	</class>
+</hibernate-mapping>
+          

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+          "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+          "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+<hibernate-mapping>
+	<class name="cn.liu.hibernate.User" table="t_user">
+		<id name="userId" column="userId">
+			<generator class="native"></generator>
+		</id>
+		<property name="userName" column="userName"></property>
+		<property name="userPassword" column="userPassword"></property>
+		<!-- 配置多对多关系中User实体类信息 
+		name属性为在User实体类定义的set集合名
+		table属性为第三个映射表名
+		-->
+		<set name="setRole" table="user_role" cascade="save-update,delete">
+		<!-- 配置当前映射文件在第三张表的外键名 -->
+		<key column="userid"></key>
+		<!-- class属性为role实体类路径
+		column属性为role实体类在第三个映射表的外键名 -->
+		<many-to-many class="cn.liu.hibernate.Role" column="roleid">
+		</many-to-many>
+		</set>
+	</class>
+</hibernate-mapping>
+          
