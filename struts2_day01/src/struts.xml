@@ -27,6 +27,6 @@
 	   <action name="dynamic" class="cn.liu.action.MethodAction">
 	   		<result>/dynamic.jsp</result>
 	   </action>
-	   
+	    <!--  test -->
 	</package>
 </struts>
